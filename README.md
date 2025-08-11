@@ -23,3 +23,6 @@ npm start
 run back end: 
 cd backend
 nodemon server.js
+
+run using docker compose:
+docker compose up --build
