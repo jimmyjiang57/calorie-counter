@@ -23,7 +23,7 @@ export default class CreateFood extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/users/')
+    axios.get(`${process.env.REACT_APP_API_URL}/users/`)
     .then(response => {
       if (response.data.length > 0) {
         this.setState({ 
@@ -73,7 +73,7 @@ export default class CreateFood extends Component {
   
     console.log(food);
 
-    axios.post('http://localhost:5000/foods/add', food)
+    axios.post(`${process.env.REACT_APP_API_URL}/foods/add`, food)
       .then(res => console.log(res.data));
     
     window.location = '/';

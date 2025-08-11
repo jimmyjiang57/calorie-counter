@@ -24,7 +24,7 @@ export default class FoodsList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/foods/')
+    axios.get(`${process.env.REACT_APP_API_URL}/foods/`)
       .then(response => {
         this.setState({ foods: response.data })
       })
@@ -34,7 +34,7 @@ export default class FoodsList extends Component {
   }
 
   deleteFood(id) {
-    axios.delete('http://localhost:5000/foods/'+id)
+    axios.delete(`${process.env.REACT_APP_API_URL}/foods/`+id)
       .then(response => { console.log(response.data)});
 
     this.setState({

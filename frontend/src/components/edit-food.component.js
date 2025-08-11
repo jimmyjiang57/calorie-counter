@@ -23,7 +23,7 @@ export default class EditFood extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/foods/'+this.props.match.params.id)
+    axios.get(`${process.env.REACT_APP_API_URL}/foods/`+this.props.match.params.id)
       .then(response => {
         this.setState({
           username: response.data.username,
@@ -36,7 +36,7 @@ export default class EditFood extends Component {
         console.log(error);
       })
 
-    axios.get('http://localhost:5000/users/')
+    axios.get(`${process.env.REACT_APP_API_URL}/users/`)
       .then(response => {
         if (response.data.length > 0) {
           this.setState({
@@ -86,7 +86,7 @@ export default class EditFood extends Component {
 
     console.log(food);
 
-    axios.post('http://localhost:5000/foods/update/' + this.props.match.params.id, food)
+    axios.post(`${process.env.REACT_APP_API_URL}/foods/update/` + this.props.match.params.id, food)
       .then(res => console.log(res.data));
 
     window.location = '/';
