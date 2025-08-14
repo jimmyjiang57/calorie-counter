@@ -19,9 +19,11 @@ connection.once('open', ()=>{
 
 const foodsRouter = require('./routes/foods');
 const usersRouter = require('./routes/users');
+const lookupRouter = require('./routes/lookup');
 
 app.use('/foods', foodsRouter);
 app.use('/users', usersRouter);
+app.use('/lookup', lookupRouter);
 
 app.listen(port, '0.0.0.0', () => {
     console.log('Server is running on port: ' + port);

@@ -28,4 +28,4 @@ run using docker compose:
 docker compose up --build
 
 frontend .env has REACT_APP_API_URL
-backend .env has ATLAS_URI
+backend .env has ATLAS_URI and FDC_API_KEY
