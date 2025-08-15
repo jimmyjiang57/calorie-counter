@@ -7,37 +7,43 @@ router.get('/calories', async (req, res) => {
     const q = (req.query.q || '').trim();
     if (!q) return res.status(400).json({ error: 'Missing q' });
 
-    // USDA search
-    const search = await axios.post(
-      'https://api.nal.usda.gov/fdc/v1/foods/search',
-      { query: q, pageSize: 1 },
-      { params: { api_key: process.env.FDC_API_KEY } }
+    const resp = await axios.post(
+      'https://trackapi.nutritionix.com/v2/natural/nutrients',
+      { query: q },
+      {
+        headers: {
+          'x-app-id': process.env.NUTRITIONIX_APP_ID,
+          'x-app-key': process.env.NUTRITIONIX_API_KEY,
+          'x-remote-user-id': '0',
+          'Content-Type': 'application/json',
+        },
+      }
     );
 
-    const item = search.data?.foods?.[0];
-    if (!item) return res.json({ query: q, calories: 0, items: [] });
+    const foods = resp.data?.foods || [];
+    // Option A: take the first match’s calories
+    const first = foods[0];
+    const firstKcal = first ? Math.round(first.nf_calories || 0) : 0;
 
-    // Energy (kcal) → nutrientNumber 208 (or id 1008)
-    const kcal =
-      item.foodNutrients?.find(
-        n => n.nutrientNumber === '208' || n.nutrientId === 1008
-      )?.value;
+    // Option B (commented): sum all parsed items
+    // const totalKcal = Math.round(foods.reduce((s,f)=>s+(f.nf_calories||0),0));
 
-    res.json({
+    return res.json({
       query: q,
-      calories: kcal ? Math.round(kcal) : 0,
-      items: [
-        {
-          name: item.description,
-          brand: item.brandOwner || null,
-          fdcId: item.fdcId,
-          calories: kcal ?? null,
-        },
-      ],
+      calories: firstKcal,
+      items: foods.map(f => ({
+        name: f.food_name,
+        serving_qty: f.serving_qty,
+        serving_unit: f.serving_unit,
+        calories: f.nf_calories,
+        brand: f.brand_name || null,
+      })),
     });
   } catch (e) {
-    console.error('USDA lookup error:', e?.response?.data || e.message);
-    res.status(500).json({ error: 'Lookup failed' });
+    console.error('Nutritionix lookup error:', e?.response?.data || e.message);
+    // Surface useful message if available
+    const status = e?.response?.status || 500;
+    return res.status(status).json({ error: 'Lookup failed' });
   }
 });
 
