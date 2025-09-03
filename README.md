@@ -2,8 +2,11 @@
 
 Web application which allows multiple users to track their progress toward fitness goals by logging food and calories.
 
-Technologies: React, Node.js, Express, MongoDB, Mongoose
+Technologies: React, Node.js, Express, MongoDB
 
+<img width="1458" height="728" alt="Screenshot 2025-09-03 at 1 25 51 AM" src="https://github.com/user-attachments/assets/e1aae894-3831-4358-89b7-c521afa21d83" />
+<img width="1467" height="729" alt="Screenshot 2025-09-03 at 1 26 10 AM" src="https://github.com/user-attachments/assets/b299b9bc-479f-415b-ad7f-43d8e947d7ff" />
+<img width="1462" height="726" alt="Screenshot 2025-09-03 at 1 27 46 AM" src="https://github.com/user-attachments/assets/b8fb0c80-5136-4105-80d3-3b69ed8bddb6" />
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
