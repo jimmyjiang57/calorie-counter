@@ -153,13 +153,13 @@ export default class CreateFood extends Component {
               className="form-control"
               value={calories}
               onChange={this.onChangeCalories}
-              placeholder="e.g., 105"
+              
             />
             {fillError ? (
               <small className="form-text text-danger">{fillError}</small>
             ) : (
               <small className="form-text text-muted">
-                Tip: Use common phrases like &quot;1 banana&quot;, &quot;2 slices cheddar&quot;.
+                Manual entry or autofill with automatic lookup from online nutrition databases.
               </small>
             )}
           </div>
