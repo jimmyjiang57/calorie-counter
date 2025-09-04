@@ -4,9 +4,9 @@ Web application which allows multiple users to track their progress toward fitne
 
 Technologies: React, Node.js, Express, MongoDB
 
-<img width="1458" height="728" alt="Screenshot 2025-09-03 at 1 25 51 AM" src="https://github.com/user-attachments/assets/e1aae894-3831-4358-89b7-c521afa21d83" />
-<img width="1467" height="729" alt="Screenshot 2025-09-03 at 1 26 10 AM" src="https://github.com/user-attachments/assets/b299b9bc-479f-415b-ad7f-43d8e947d7ff" />
-<img width="1462" height="726" alt="Screenshot 2025-09-03 at 1 27 46 AM" src="https://github.com/user-attachments/assets/b8fb0c80-5136-4105-80d3-3b69ed8bddb6" />
+<img width="1470" height="721" alt="Screenshot 2025-09-04 at 3 21 57 PM" src="https://github.com/user-attachments/assets/2c2607a7-eed0-4ad5-9c89-37a1679f5443" />
+<img width="1470" height="729" alt="Screenshot 2025-09-04 at 3 22 18 PM" src="https://github.com/user-attachments/assets/490f68eb-f82d-4258-9a24-b08fe538f43a" />
+<img width="1470" height="728" alt="Screenshot 2025-09-04 at 3 22 39 PM" src="https://github.com/user-attachments/assets/672061af-cd2e-4c64-b50f-ad32e158646c" />
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
