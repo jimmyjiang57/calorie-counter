@@ -7,8 +7,6 @@ services:
       - "5000:5000"
     env_file:
       - ./backend/.env   # contains ATLAS_URI and PORT
-    # optional:
-    # restart: unless-stopped
 
   frontend:
     build:
@@ -19,5 +17,3 @@ services:
       - "3000:80"
     depends_on:
       - backend
-    # optional:
-    # restart: unless-stopped

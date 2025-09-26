@@ -29,7 +29,6 @@ export default class FoodsList extends Component {
   }
 
   componentDidMount() {
-    // Fetch all users
     axios.get(`${process.env.REACT_APP_API_URL}/users/`)
       .then(response => {
         this.setState({ users: response.data });

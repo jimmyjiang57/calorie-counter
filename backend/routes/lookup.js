@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const axios = require('axios');
 
-// GET /lookup/calories?q=1 banana
 router.get('/calories', async (req, res) => {
   try {
     const q = (req.query.q || '').trim();
@@ -21,12 +20,8 @@ router.get('/calories', async (req, res) => {
     );
 
     const foods = resp.data?.foods || [];
-    // Option A: take the first match’s calories
     const first = foods[0];
     const firstKcal = first ? Math.round(first.nf_calories || 0) : 0;
-
-    // Option B (commented): sum all parsed items
-    // const totalKcal = Math.round(foods.reduce((s,f)=>s+(f.nf_calories||0),0));
 
     return res.json({
       query: q,
@@ -41,7 +36,6 @@ router.get('/calories', async (req, res) => {
     });
   } catch (e) {
     console.error('Nutritionix lookup error:', e?.response?.data || e.message);
-    // Surface useful message if available
     const status = e?.response?.status || 500;
     return res.status(status).json({ error: 'Lookup failed' });
   }

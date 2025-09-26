@@ -3,16 +3,16 @@
 }
 
 .page-wrapper {
-  border: 2px solid #ddd;   /* light gray border */
-  border-radius: 12px;      /* rounded corners */
-  padding: 20px;            /* space inside */
-  margin-top: 20px;         /* spacing below navbar */
-  background: #fff;         /* white background */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* optional subtle shadow */
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  background: #fff;       
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .navbar {
-  background: linear-gradient(90deg, #0d6efd, #0056b3); /* blue gradient */
+  background: linear-gradient(90deg, #0d6efd, #0056b3);
   padding: 0.8rem 1rem;
 }
 

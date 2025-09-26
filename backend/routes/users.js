@@ -1,6 +1,6 @@
 const router = require('express').Router();
 let User = require('../models/user.model');
-let Food = require('../models/food.model'); // Import the Food model
+let Food = require('../models/food.model');
 
 router.route('/').get((req, res) => {
   User.find()

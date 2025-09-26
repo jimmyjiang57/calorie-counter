@@ -74,23 +74,26 @@ export default class EditFood extends Component {
     })
   }
 
-  onSubmit(e) {
-    e.preventDefault();
-
+  onSubmit = async (e) => {
+  e.preventDefault();
+  try {
     const food = {
       username: this.state.username,
       description: this.state.description,
-      calories: this.state.calories,
-      date: this.state.date
-    }
-
-    console.log(food);
-
-    axios.post(`${process.env.REACT_APP_API_URL}/foods/update/` + this.props.match.params.id, food)
-      .then(res => console.log(res.data));
-
+      calories: Number(this.state.calories),
+      date: this.state.date,
+    };
+    const res = await axios.post(
+      `${process.env.REACT_APP_API_URL}/foods/update/${this.props.match.params.id}`,
+      food
+    );
+    console.log(res.data);
     window.location = '/';
+  } catch (err) {
+    console.error(err?.response?.data || err.message);
+    alert(err?.response?.data || 'Update failed');
   }
+};
 
   render() {
     return (
@@ -124,7 +127,7 @@ export default class EditFood extends Component {
               />
         </div>
         <div className="form-group">
-          <label>Calories (in minutes): </label>
+          <label>Calories: </label>
           <input 
               type="text" 
               className="form-control"

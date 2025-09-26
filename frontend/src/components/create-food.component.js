@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
-import { fetchCalories } from '../api'; // uses REACT_APP_API_URL under the hood
+import { fetchCalories } from '../api';
 
 export default class CreateFood extends Component {
   constructor(props) {
@@ -27,7 +27,6 @@ export default class CreateFood extends Component {
   }
 
   componentDidMount() {
-    // If you have an API helper for users, you can swap this later.
     axios
       .get(`${process.env.REACT_APP_API_URL ?? 'http://localhost:5000'}/users/`)
       .then(response => {
@@ -67,7 +66,7 @@ export default class CreateFood extends Component {
     }
     try {
       this.setState({ isFilling: true, fillError: '' });
-      const data = await fetchCalories(query); // calls /lookup/calories?q=...
+      const data = await fetchCalories(query);
       if (data && typeof data.calories === 'number') {
         this.setState({ calories: String(Math.round(data.calories)) });
       } else {
@@ -98,7 +97,6 @@ export default class CreateFood extends Component {
       })
       .catch(err => {
         console.error(err);
-        // You could show an inline error here if you prefer not to redirect on failure
       });
   }
 
